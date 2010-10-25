@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="UTF-8">
+<style>body{width:400px;margin:auto;font-family:monospace}</style>
+</head>
+<body id="test">
+
+<script>
+window.onload=function tdd(){ 
+  ok(true,true);
+  ok(true,false);
+}
+
+function ok(a,b){
+  var tu = document.createElement('div');
+  if(eval(a==b)){
+    tu.textContent='PASS';
+    tu.style.color='green';
+  }else{
+    tu.textContent='FAIL';
+    tu.style.color='red';
+  }
+  $('test').appendChild(tu);
+}
+
+function $(id){return document.getElementById(id)}
+</script>
