@@ -1,24 +1,182 @@
-<!doctype html><html><head><meta charset="UTF-8">
+<!doctype html><html><head><meta charset="UTF-8"><title>boids</title>
+<script src="raphael.js"></script> 
 <style>body{width:400px;margin:auto;font-family:monospace}</style>
-</head>
-<body id="test">
+</head><body>
+<div id='boids'>
+<div style="position:absolute;bottom:10px;right:10px" id="test"></div>
 
 <script>
-window.onload=function tdd(){ 
-  ok(true,true);
-  ok(true,false);
+var Boid = function(x, y) {
+	this.x = x;
+	this.y = y;
+	this.xVelocity =  1;
+	this.yVelocity = 1;
+	var size=5;
+	this.circle = paper.circle(x, y, 3).attr({fill:'lightgrey','stroke':'white'});
 }
 
-function ok(a,b){
-  var tu = document.createElement('div');
-  if(eval(a==b)){
-    tu.textContent='PASS';
-    tu.style.color='green';
-  }else{
-    tu.textContent='FAIL';
-    tu.style.color='red';
-  }
-  $('test').appendChild(tu);
+Boid.prototype.move = function() {
+	var border = 5;
+	if(this.x < border || this.x > w - border) {
+		this.xVelocity = -this.xVelocity;
+	}
+	if(this.y < border || this.y > h - border) {
+		this.yVelocity = -this.yVelocity;
+	}
+	this.x += this.xVelocity;
+	this.y += this.yVelocity;
+	
+	this.circle.translate(this.xVelocity, this.yVelocity);
+}
+
+Boid.prototype.distance = function(boid) {
+  var distX = this.x - boid.x;
+  var distY = this.y - boid.y;
+  return Math.sqrt(distX * distX + distY * distY);
+}
+
+Boid.prototype.moveAway = function(boids, minDistance) {
+	var distanceX = 0;
+	var distanceY = 0;
+
+	for(var i = 0; i < boids.length; i++) {
+		var boid = boids[i];
+		if(boid.x == this.x && boid.y == this.y) continue;
+		
+		var distance = this.distance(boid)
+		if(distance < minDistance) {
+			var xdiff = (this.x - boid.x);
+			var ydiff = (this.y - boid.y);
+
+			if      ( xdiff >= 0 ) xdiff =  Math.sqrt(minDistance) - xdiff;
+			else if ( xdiff <  0 ) xdiff = -Math.sqrt(minDistance) - xdiff;
+
+			if      ( ydiff >= 0 ) ydiff =  Math.sqrt(minDistance) - ydiff;
+			else if ( ydiff <  0 ) ydiff = -Math.sqrt(minDistance) - ydiff;
+
+			distanceX += xdiff;
+			distanceY += ydiff;
+			boid = null; 
+		}
+	}
+	
+	this.xVelocity -= distanceX / 5;
+	this.yVelocity -= distanceY / 5;
+}
+
+Boid.prototype.moveCloser = function(boids, distance) {
+
+	var avgX = 0;
+	var avgY = 0;
+	for(var i = 0; i < boids.length; i++) {
+		var boid = boids[i];
+		if(boid.x == this.x && boid.y == this.y) continue;
+		if(this.distance(boid) > distance) continue;
+		
+		avgX += (this.x - boid.x);
+		avgY += (this.y - boid.y);
+		boid = null;
+	}
+
+	avgX /= boids.length;
+	avgY /= boids.length;
+	distance = Math.sqrt((avgX * avgX) + (avgY * avgY)) * -1.0;
+	this.xVelocity = this.xVelocity + (avgX / distance) * 0.15;
+	this.yVelocity = this.yVelocity + (avgY / distance) * 0.15;
+}
+
+// calculate the average velocity of the other boids
+Boid.prototype.moveWith = function(boids, distance) {
+
+	var avgX = 0;
+	var avgY = 0;
+	for(var i = 0; i < boids.length; i++) {
+		var boid = boids[i];
+		if(boid.x == this.x && boid.y == this.y) continue;
+		if(this.distance(boid) > distance) continue;
+		avgX += boid.xVelocity;
+		avgY += boid.yVelocity;
+		boid = null;
+	}
+	
+	avgX /= boids.length;
+	avgY /= boids.length;
+	distance = Math.sqrt((avgX * avgX) + (avgY * avgY)) * 1.0;
+	this.xVelocity = this.xVelocity + (avgX / distance) * 0.05;
+	this.yVelocity = this.yVelocity + (avgY / distance) * 0.05;
+}
+
+function createboids(nbboids){
+	boids = [];
+	for(var i = 0; i < nbboids; i++) {
+		boids.push(new Boid(Math.ceil(Math.random() * w), Math.ceil(Math.random() * h)));
+	}
+}
+
+function setup(){
+	stop = true, w=600,	h=400, numboids = 30;
+	paper = Raphael("boids", w, h);
+	
+	createboids(numboids);
+
+	function play(){
+		for(var i = 0; i < numboids; i++) {
+			
+			boids[i].moveWith(boids, 300);
+			boids[i].moveCloser(boids, 300);
+			boids[i].moveAway(boids, 15);
+			
+			var maxVelocity = 5;
+			if (boids[i].xVelocity>maxVelocity) boids[i].xVelocity=maxVelocity;
+			if (boids[i].yVelocity>maxVelocity) boids[i].yVelocity=maxVelocity;
+		}
+						
+		for(var i = 0; i < numboids; i++) {
+			boids[i].move();
+		}
+
+		if(!stop) setTimeout(arguments.callee, 50);
+	};
+	
+	document.onclick = function() { 
+		stop = !stop;
+		if(!stop) play();
+	}
+}
+</script>
+
+<script>
+window.onload=function init(){ 
+	setup();
+	tdd();
+}
+
+function tdd(){ 
+	ok('Warming up',true,true);
+	var b = new Boid(10,10);
+	ok('Create a boid',b.x,10);
+	ok('Create 30 boids',boids.length,30);
+	ok('Random',true,true);
+	ok('Play with Boids',true,true);
+	ok('Boid has a velocity',b.xVelocity,1);
+	b.move();
+	ok('Moving a boid',b.x,11);
+	ok('Moving all boids',true,true);
+	b.x=w;
+	b.move();
+	ok('Bounce right border',b.x,w-1);
+	ok('Inversed velocity',b.xVelocity,-1);
+	b.y=h;
+	b.move();
+	ok('Bounce top border',b.y,h-1);
+	ok('Inversed velocity',b.yVelocity,-1);
+}
+
+function ok(desc,a,b){
+	var tu = document.createElement('div');
+	if ( eval( a==b ) ) { tu.textContent='PASS '+desc; tu.style.color='green'; }
+	else { tu.textContent='FAIL '+desc; tu.style.color='red'; }
+	$('test').appendChild(tu);
 }
 
 function $(id){return document.getElementById(id)}
