@@ -1,0 +1,25 @@
+<!DOCTYPE html><html><head><title>Tetris</title>
+  <link rel="stylesheet" href="style/main.css" />
+  <link rel="stylesheet" href="style/qunit.css"/>
+  <script src="lib/jquery.js"></script>
+  <script src="lib/qunit.js"></script>
+  <script src="lib/processing.js"></script>
+  <script src="script/test.js"></script>
+  <script src="script/main.js"></script>
+</head><body>
+<!--
+<div id="test"><h1 id="qunit-header"></h1><ol id="qunit-tests"></ol></div>
+<canvas id="cv" height="355" width="355"></canvas>
+-->
+<canvas id="cv" height="900" width="600"></canvas>
+
+<div class="side">
+  <div class="info">score<div id="score">0</div></div>
+  <div class="info" style="background-color:black;border:2px solid white;width:96px">
+    <canvas id="nxt"></canvas>    
+  </div>
+  <div class="info">lines<div id="lines">0</div></div>
+  <div class="info">level<div id="level">0</div></div>
+  <input type="button" id="play" value="start"/>
+</div>
+</body></html>

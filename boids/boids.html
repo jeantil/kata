@@ -8,11 +8,12 @@ var	w = 600;
 var	h = 400;
 var maxVelocity = 5;
 
-var Boid = function(x, y, size) {
+var Boid = function(x, y) {
 	this.x = x;
 	this.y = y;
-	this.xVelocity = 1;
+	this.xVelocity =  1;
 	this.yVelocity = -1;
+	var size = 5;
 	this.circle = paper.circle(x, y, size).attr({fill:'white'});
 }
 
@@ -133,13 +134,13 @@ var random = function(maxNum) {
 
 window.onload = function () {
 	var stop = true;
-	
-  paper = Raphael("boids", w, h);
+
+	paper = Raphael("boids", w, h);
 
 	var boids = [];
 	var numBoids = 20;
 	for(var i = 0; i < numBoids; i++) {
-		boids.push(new Boid(random(w), random(h), 5));
+		boids.push(new Boid(random(w), random(h)));
 	}
 
 	function moveBoids() {
@@ -148,16 +149,16 @@ window.onload = function () {
 			boids[i].moveCloser(boids, 300);					
 			boids[i].moveAway(boids, 15);	
 		}
-	
+
 		for(var i = 0; i < numBoids; i++) {
 			boids[i].move();
 		}
 		if(!stop) setTimeout(arguments.callee, 50);
 	};			
-	
+
 	document.onclick = function() { 
 		stop = !stop;
 		if(!stop) moveBoids();
-	}			
+	}
 };
 </script></body></html> 
