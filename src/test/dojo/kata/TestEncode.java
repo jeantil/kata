@@ -2,7 +2,7 @@ package dojo.kata;
 
 
 import static org.junit.Assert.assertTrue;
-
+import static dojo.kata.Encode.encode;
 import org.junit.Test;
 
 
