@@ -10,4 +10,8 @@ public class TestEncode{
 	@Test public void testtruth(){
 		assertTrue(true);
 	}
+	
+	@Test public void encodeEmpty(){
+		assertTrue(encode("").equals(""));
+	}
 }
