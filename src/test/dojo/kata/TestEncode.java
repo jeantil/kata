@@ -15,7 +15,11 @@ public class TestEncode{
 		assertTrue(encode("").equals(""));
 	}
 	
-	@Test public void encodeSingleChar(){
+	@Test public void encodeSingleA(){
 		assertTrue(encode("A").equals("1A"));
+	}
+	
+	@Test public void encodeSingleB(){
+		assertTrue(encode("B").equals("1B"));
 	}
 }
