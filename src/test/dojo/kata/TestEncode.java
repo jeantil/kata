@@ -27,4 +27,7 @@ public class TestEncode{
 		assertTrue(encode("CC").equals("2C"));
 	}
 	
+	@Test public void encodeTwoD(){
+		assertTrue(encode("DD").equals("2D"));
+	}
 }
