@@ -22,4 +22,9 @@ public class TestEncode{
 	@Test public void encodeSingleB(){
 		assertTrue(encode("B").equals("1B"));
 	}
+	
+	@Test public void encodeTwoC(){
+		assertTrue(encode("CC").equals("2C"));
+	}
+	
 }
