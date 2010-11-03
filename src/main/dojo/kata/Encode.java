@@ -3,7 +3,7 @@ public class Encode {
 	public static String rle(String string) {
 		if(string.length()==0) return "";
 		if(string.length()==1) return encode(string);
-		if(string.length()==2) return encode(string.substring(0,1))+encode(string.substring(1,2));	
+		if(string.length()==2) return encode(string.substring(0,1))+encode(string.substring(1,2));
 		return "";
 	}
 	public static String encode(String string) {

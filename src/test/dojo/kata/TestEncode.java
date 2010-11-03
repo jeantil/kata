@@ -72,4 +72,8 @@ public class TestEncode{
 	@Test public void rleAB(){	
 		assertTrue(rle("AB").equals("1A1B"));
 	}
+	
+	@Test public void rleAAB(){	
+		assertTrue(rle("AAB").equals("2A1B"));
+	}
 }
