@@ -68,4 +68,5 @@ public class TestEncode{
 	@Test public void rleB(){	
 		assertTrue(rle("B").equals("1B"));
 	}
+
 }

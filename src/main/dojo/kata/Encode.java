@@ -2,7 +2,8 @@ package dojo.kata;
 public class Encode {
 	public static String rle(String string) {
 		if(string.length()==0) return "";
-		return "1A";
+		if(string.length()==1) return encode(string);	
+		return "";
 	}
 	public static String encode(String string) {
 		if(string.length()==0) return "";
