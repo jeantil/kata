@@ -80,4 +80,8 @@ public class TestEncode{
 	@Test public void rleABB(){	
 		assertTrue(rle("ABB").equals("1A2B"));
 	}
+	
+	@Test public void rleABBCC(){	
+		assertTrue(rle("ABBCC").equals("1A2B2C"));
+	}
 }
