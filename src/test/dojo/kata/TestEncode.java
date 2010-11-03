@@ -35,14 +35,21 @@ public class TestEncode{
 	@Test public void getFirstRunEmpty(){
 		assertTrue(getFirstRun("").equals(""));
 	}
+	
 	@Test public void getFirstRunSingleA(){
 		assertTrue(getFirstRun("A").equals("A"));
 	}
+	
 	@Test public void getFirstRunSingleB(){
 		assertTrue(getFirstRun("B").equals("B"));
 	}
+	
 	@Test public void getFirstRunCoupleAB(){
 		assertTrue(getFirstRun("AB").equals("A"));
+	}
+
+	@Test public void getFirstRunAAB(){
+		assertTrue(getFirstRun("AAB").equals("AA"));
 	}
 
 }
