@@ -2,10 +2,13 @@ package dojo.kata;
 public class Encode {
 	public static String rle(String string) {
 		if(string.length()==0) return "";
-		if(string.length()==1) return encode(getFirstRun(string));
-		if(string.length()==2) return encode(getFirstRun(string))+encode(getFirstRun(string.replace(getFirstRun(string), "")));
-		if(string.length()==3) return encode(getFirstRun(string))+encode(getFirstRun(string.replace(getFirstRun(string), "")));
-		return "";
+		String accumulator="";
+		accumulator=encode(getFirstRun(string));		
+		if(string.length()> 1){
+			string=string.replace(getFirstRun(string), "");
+			accumulator+=encode(getFirstRun(string));
+		}					
+		return accumulator;
 	}
 	public static String encode(String string) {
 		if(string.length()==0) return "";
