@@ -2,9 +2,9 @@ package dojo.kata;
 public class Encode {
 	public static String rle(String string) {
 		if(string.length()==0) return "";
-		if(string.length()==1) return encode(string);
-		if(string.length()==2) return encode(string.substring(0,1))+encode(string.substring(1,2));
-		if(string.length()==3) return encode(string.substring(0,2))+encode(string.substring(2,3));
+		if(string.length()==1) return encode(getFirstRun(string));
+		if(string.length()==2) return encode(getFirstRun(string))+encode(getFirstRun(string.replace(getFirstRun(string), "")));
+		if(string.length()==3) return encode(getFirstRun(string))+encode(getFirstRun(string.replace(getFirstRun(string), "")));
 		return "";
 	}
 	public static String encode(String string) {
