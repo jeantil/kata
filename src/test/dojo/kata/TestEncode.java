@@ -86,10 +86,13 @@ public class TestEncode{
 		assertTrue(rle("ABBCC").equals("1A2B2C"));
 	}
 
+	@Test public void rleABBAA(){	
+		assertTrue(rle("ABBAA").equals("1A2B2A"));
+	}
 	// Completion test from wikipedia
-	@Test public void rleComplete(){	
-		assertEquals("12W1B12W3B24W1B14W",rle("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"));
-	}	
+//	@Test public void rleComplete(){	
+//		assertEquals("12W1B12W3B24W1B14W",rle("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"));
+//	}	
 
 }
 
