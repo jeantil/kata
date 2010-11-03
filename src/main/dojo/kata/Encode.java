@@ -6,7 +6,7 @@ public class Encode {
 		accumulator=encode(getFirstRun(string));	
 		
 		while(string.length()> 1){
-			string=string.replace(getFirstRun(string), "");			
+			string=string.substring(getFirstRun(string).length());			
 			accumulator+=encode(getFirstRun(string));
 		}
 						
