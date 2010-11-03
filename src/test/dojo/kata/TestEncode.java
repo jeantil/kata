@@ -4,6 +4,7 @@ package dojo.kata;
 import static org.junit.Assert.assertTrue;
 import static dojo.kata.Encode.encode;
 import static dojo.kata.Encode.getFirstRun;
+import static dojo.kata.Encode.rle;
 import org.junit.Test;
 
 

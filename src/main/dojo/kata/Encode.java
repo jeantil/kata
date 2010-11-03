@@ -1,5 +1,8 @@
 package dojo.kata;
 public class Encode {
+	public static String rle(String string) {
+		return "";
+	}
 	public static String encode(String string) {
 		if(string.length()==0) return "";
 		return ""+string.length()+string.charAt(0);
