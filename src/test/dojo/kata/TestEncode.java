@@ -30,4 +30,8 @@ public class TestEncode{
 	@Test public void encodeTwoD(){
 		assertTrue(encode("DD").equals("2D"));
 	}
+	
+	@Test public void getFirstRunEmpty(){
+		assertTrue(getFirstRun("").equals(""));
+	}
 }
