@@ -51,5 +51,8 @@ public class TestEncode{
 	@Test public void getFirstRunAAB(){
 		assertTrue(getFirstRun("AAB").equals("AA"));
 	}
-
+	
+	@Test public void getFirstRunAAAB(){
+		assertTrue(getFirstRun("AAAB").equals("AAA"));
+	}
 }
