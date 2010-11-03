@@ -5,6 +5,7 @@ public class Encode {
 		return ""+string.length()+string.charAt(0);
 	}
 	public static String getFirstRun(String string) {
-		return "";
+		if(string.length()==0) return "";		
+		return "A";
 	}
 }
