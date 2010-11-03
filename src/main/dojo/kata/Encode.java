@@ -6,6 +6,6 @@ public class Encode {
 	}
 	public static String getFirstRun(String string) {
 		if(string.length()==0) return "";		
-		return "A";
+		return string;
 	}
 }
