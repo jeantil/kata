@@ -5,8 +5,12 @@ public class Encode {
 		String accumulator="";
 		accumulator=encode(getFirstRun(string));		
 		if(string.length()> 1){
-			string=string.replace(getFirstRun(string), "");
+			string=string.replace(getFirstRun(string), "");			
 			accumulator+=encode(getFirstRun(string));
+			if(string.length()> 1){
+				string=string.replace(getFirstRun(string), "");			
+				accumulator+=encode(getFirstRun(string));	
+			}
 		}					
 		return accumulator;
 	}
