@@ -4,4 +4,7 @@ public class Encode {
 		if(string.length()==0) return "";
 		return ""+string.length()+string.charAt(0);
 	}
+	public static String getFirstRun(String string) {
+		return "";
+	}
 }
