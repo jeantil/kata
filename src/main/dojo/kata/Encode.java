@@ -3,15 +3,13 @@ public class Encode {
 	public static String rle(String string) {
 		if(string.length()==0) return "";
 		String accumulator="";
-		accumulator=encode(getFirstRun(string));		
-		if(string.length()> 1){
+		accumulator=encode(getFirstRun(string));	
+		
+		while(string.length()> 1){
 			string=string.replace(getFirstRun(string), "");			
 			accumulator+=encode(getFirstRun(string));
-			if(string.length()> 1){
-				string=string.replace(getFirstRun(string), "");			
-				accumulator+=encode(getFirstRun(string));	
-			}
-		}					
+		}
+						
 		return accumulator;
 	}
 	public static String encode(String string) {
