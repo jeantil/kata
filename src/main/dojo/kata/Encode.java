@@ -6,8 +6,11 @@ public class Encode {
 	}
 	public static String getFirstRun(String string) {
 		if(string.length()==0) return "";
-		if(string.length()>=3 && string.charAt(0)==string.charAt(1) && string.charAt(0)==string.charAt(2))return string.substring(0,3);
-		if(string.length()>=2 && string.charAt(0)==string.charAt(1))return string.substring(0,2);
-		return string.substring(0,1);
+		if(string.length()==1) return string;	
+		int pos=0;		
+		do 
+			pos=pos+1;
+		while (pos < string.length() && string.charAt(pos-1)==string.charAt(pos));		
+		return string.substring(0,pos);
 	}
 }
