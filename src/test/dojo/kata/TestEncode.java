@@ -55,5 +55,8 @@ public class TestEncode{
 	@Test public void getFirstRunAAAB(){
 		assertTrue(getFirstRun("AAAB").equals("AAA"));
 	}
-		
+	
+	@Test public void rleEmpty(){	
+		assertTrue(rle("").equals(""));
+	}
 }
