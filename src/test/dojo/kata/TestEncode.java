@@ -60,4 +60,8 @@ public class TestEncode{
 	@Test public void rleEmpty(){	
 		assertTrue(rle("").equals(""));
 	}
+	
+	@Test public void rleA(){	
+		assertTrue(rle("A").equals("1A"));
+	}
 }
