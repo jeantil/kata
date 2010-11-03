@@ -2,6 +2,7 @@ package dojo.kata;
 
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 import static dojo.kata.Encode.encode;
 import static dojo.kata.Encode.getFirstRun;
 import static dojo.kata.Encode.rle;
@@ -84,4 +85,11 @@ public class TestEncode{
 	@Test public void rleABBCC(){	
 		assertTrue(rle("ABBCC").equals("1A2B2C"));
 	}
+
+	// Completion test from wikipedia
+	@Test public void rleComplete(){	
+		assertEquals("12W1B12W3B24W1B14W",rle("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"));
+	}	
+
 }
+
