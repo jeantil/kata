@@ -1,4 +1,11 @@
-Edit test.rb, it is already setup to run unit tests based on Test::Unit 
-and possibly add red/green to the console output if the gem is installed
+Edit test.rb, it is already setup to run unit tests based on MiniTest::Unit 
+
+You can replace MiniTest::Unit by Test::Unit by installing the gem , using
+Test::Unit::TestCase instead of MiniTest::Unit::TestCase and removing
+the line 
+MiniTest::Unit.autorun
+
+Enabling Test::Unit also allows you to use redgreen (but you must use 
+Test::Unit for redgreen to work)
 
 Use ruby test.rb to run
