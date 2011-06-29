@@ -1,8 +1,8 @@
-package eu.byjean.bugs.hibernate.dao;
+package eu.byjean.hibernate.dao;
 
 import org.springframework.stereotype.Repository;
 
-import eu.byjean.bugs.hibernate.model.Dummy;
+import eu.byjean.hibernate.model.Dummy;
 
 @Repository
 public class DummyDao extends AbstractGenericDao {

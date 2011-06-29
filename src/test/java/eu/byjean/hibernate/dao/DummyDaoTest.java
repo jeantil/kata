@@ -1,4 +1,4 @@
-package eu.byjean.bugs.hibernate.dao;
+package eu.byjean.hibernate.dao;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,6 +7,8 @@ import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringApplicationContext;
 import org.unitils.spring.annotation.SpringBeanByType;
+
+import eu.byjean.hibernate.dao.DummyDao;
 
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 @DataSet

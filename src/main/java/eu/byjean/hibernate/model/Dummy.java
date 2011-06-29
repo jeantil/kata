@@ -1,4 +1,4 @@
-package eu.byjean.bugs.hibernate.model;
+package eu.byjean.hibernate.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

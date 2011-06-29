@@ -6,6 +6,6 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="dialect">org.hibernate.dialect.HSQLDialect</property>
-		<mapping class="eu.byjean.bugs.hibernate.model.Dummy" />
+		<mapping class="eu.byjean.hibernate.model.Dummy" />
 	</session-factory>
 </hibernate-configuration>

@@ -1,4 +1,4 @@
-package eu.byjean.bugs.hibernate.dao;
+package eu.byjean.hibernate.dao;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
