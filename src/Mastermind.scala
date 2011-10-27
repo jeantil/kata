@@ -1,0 +1,9 @@
+package 
+
+/**
+ * 
+ */
+
+object Mastermind {
+
+}
